@@ -1,0 +1,63 @@
+/* Horario Styles */
+.horario-container {
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.horario-header {
+  background-color: #0052cc;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.horario-table-container {
+  overflow-x: auto;
+}
+
+.horario-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.horario-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.horario-table td {
+  padding: 16px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.horario-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.acceder-button {
+  background-color: #e6f4ea;
+  color: #0a703e;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.acceder-button:hover {
+  background-color: #d4ebdb;
+}

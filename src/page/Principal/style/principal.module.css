@@ -1,0 +1,71 @@
+.main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.date {
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.thumbnail {
+  background-color: #ccc;
+  width: 100%;
+  height: 120px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.card h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #000;
+}
+
+.card p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.date-info {
+  text-align: right;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+}
+.no-courses-message{
+  color: rgb(218, 35, 135);
+  font-size: larger;
+}

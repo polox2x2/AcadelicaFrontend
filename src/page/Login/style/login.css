@@ -1,0 +1,126 @@
+
+/* Panel izquierdo */
+.container {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.left-panel {
+  background-color: #4d8bbd;
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-panel .logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.left-panel h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Panel derecho */
+.right-panel {
+  background-color: #f4f4f4;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.mini-logo {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+.login-box h2 {
+  font-size: 28px;
+  letter-spacing: 4px;
+  color: #2366a2;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.subtitle span {
+  font-weight: 300;
+  font-style: italic;
+}
+
+form {
+  text-align: left;
+}
+
+form label {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+form small {
+  font-size: 11px;
+  color: #888;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  text-decoration: none;
+}
+
+.btn.secondary {
+  background-color: #007bff;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+.login-div-error{
+  color: red;
+}
