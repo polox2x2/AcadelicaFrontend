@@ -67,7 +67,7 @@ useEffect(() => {
         </p>
       )}
     </div>
-    <Chatbot />
+    
     
 
   </div>

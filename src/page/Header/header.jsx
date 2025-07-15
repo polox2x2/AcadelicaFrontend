@@ -29,7 +29,7 @@ const Header = ({ toggleSidebar }) => {
   };
 
   window.addEventListener("storage", handleStorageChange);
-  handleStorageChange(); // for first mount
+  handleStorageChange(); 
 
   return () => window.removeEventListener("storage", handleStorageChange);
 }, []);

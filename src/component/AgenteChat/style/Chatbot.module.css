@@ -80,3 +80,18 @@ position: fixed;
   padding: 0 15px;
   cursor: pointer;
 }
+
+
+.chatbot-close {
+ background: transparent;
+  border: none;
+ font-size: 20px;
+ color: white;
+ cursor: pointer;
+ transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.chatbot-close:hover {
+transform: scale(1.2);
+ color: #ffdddd;
+}

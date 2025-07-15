@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './SchoolAdminCRUD.module.css';
 import axios from 'axios';
-import ModalForm from '../../component/Modal/Modal';
+import ModalForm from '../../component/Modal/component/Modal';
 
 const SchoolAdminCRUD = () => {
   const [data, setData] = useState({ alumnos: [], cursos: [], profesores: [], horarios: [] });

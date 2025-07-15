@@ -8,7 +8,7 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
-      from: "bot",
+      from: "AcadaliBot",
       text: "¡Hola! Soy el asistente virtual de Acadelica. ¿En qué puedo ayudarte hoy?",
     },
   ]);

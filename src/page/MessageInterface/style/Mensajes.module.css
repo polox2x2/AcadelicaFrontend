@@ -1,0 +1,24 @@
+.messages-container {
+  display: flex;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+  .messages-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .contacts-area {
+    width: 100%;
+    max-height: 200px;
+    order: -1;
+  }
+
+  .chat-area {
+    height: 400px;
+  }
+}

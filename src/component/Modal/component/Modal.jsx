@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Modal.module.css';
+import styles from '../styles/Modal.module.css';
 
 const ModalForm = ({ visible, onClose, onSave, data }) => {
   const [formData, setFormData] = useState({ ...data });

@@ -1,0 +1,43 @@
+.contacts-area {
+  width: 350px;
+  background: #f1f5f9;
+  border-left: 1px solid #e2e8f0;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #bfdbfe;
+  padding: 12px 15px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.contact-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: #3b82f6;
+  color: white;
+  flex-shrink: 0;
+}
+
+.contact-name {
+  font-weight: 500;
+  color: #1e40af;
+  font-size: 14px;
+}

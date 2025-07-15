@@ -4,6 +4,7 @@ import Header from '../page/Header/header';
 import styles from './style/MainLayout.module.css'
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../component/Sidebar/Sidebar';
+import Chatbot from '../component/AgenteChat/Chatbot';
 const MainLayout = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
@@ -14,7 +15,9 @@ const MainLayout = () => {
       <div className={styles.contentWrapper}>
         <main className={`${styles['main-content']} ${sidebarExpanded ? styles['main-expanded'] : ''}`}>
           <Outlet />
+          <Chatbot />  
         </main>
+        
         <Footer />
       </div>
     </div>

@@ -8,6 +8,7 @@ import MainLayout from "./layout/MainLayout";
 import Horario from "./page/Horario/Horario";
 import Principal from "./page/Principal/principal";
 import SchoolAdminCRUD from "./page/SchoolAdminCRUD/SchoolAdminCRUD";
+import Mensajes from "./page/MessageInterface/Mensajes";
 function App() {
  
   return (
@@ -25,8 +26,8 @@ function App() {
           <Route index element={<Principal />} /> {/* Muestra Principal en / */}
           <Route path="principal" element={<Principal />} />
           <Route path="horario" element={<Horario />} />
-      
-
+          <Route path="mensajes" element ={<Mensajes/>} />
+            
         </Route>
 
       {/* Administrador  */}
