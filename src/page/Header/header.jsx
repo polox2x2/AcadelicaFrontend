@@ -45,11 +45,11 @@ const Header = ({ toggleSidebar }) => {
         <div className={styles['logo-text']}>ACADEMIA</div>
       </div>
       <div className={styles['user-section']}>
-        <div className={styles['user-info']}>{alumnoData ? `Hola, ${alumnoData.nombre}` : 'Cargando nombre...'}</div>
         <button onClick={handleLogout} >
         Cerrar Sesión
       </button>
         <div className={styles['user-avatar']}>👤</div>
+        <div className={styles['user-info']}>{alumnoData ? `Hola, ${alumnoData.nombre}` : 'Cargando nombre...'}</div>
       </div>
     </div>
   );

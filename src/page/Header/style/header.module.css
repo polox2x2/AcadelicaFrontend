@@ -38,9 +38,9 @@
   
   
 } 
-.styles.logoImg{
-    margin: 20px;
-    width: 10px;
+.logoImg{
+    margin: 5px;
+    width: 70px;
 }
 
 .logo-text {
@@ -55,20 +55,41 @@
 }
 
 .user-info {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .user-avatar {
   width: 35px;
   height: 35px;
-  background: #FF9800;
+  background: linear-gradient(135deg, #ffa726, #fb8c00);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 14px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }

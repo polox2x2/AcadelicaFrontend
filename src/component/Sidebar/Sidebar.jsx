@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = ({ expanded }) => {
   const menuItems = [
     { icon: '📋', label: 'Principal', path: '/principal' },
-    { icon: '👥', label: 'Estudiantes', path: '/estudiantes' },
+    { icon: '👥', label: 'games', path: '/games' },
     { icon: '▶', label: 'Cursos', path: '/cursos' },
     { icon: '📧', label: 'Mensajes', path: '/mensajes' },
-    { icon: '🖼', label: 'Galería', path: '/galeria' },
+    
   ];
 
   return (

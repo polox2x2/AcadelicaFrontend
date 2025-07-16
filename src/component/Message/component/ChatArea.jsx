@@ -1,5 +1,4 @@
-
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/ChatArea.module.css';
 import MessageInput from '../component/MessageInput';
 import MensajeModal from '../../Modal/component/MensajeModal';
@@ -11,12 +10,18 @@ const ChatArea = ({ selectedContact }) => {
   const [showModal, setShowModal] = useState(false);
 
   const correo = localStorage.getItem('correoAlumno');
+  const token = localStorage.getItem('token'); // ✅ Agrega el token
 
+  // Obtener datos del alumno
   useEffect(() => {
     const handleStorageChange = () => {
-      if (correo) {
+      if (correo && token) {
         axios
-          .get(`http://localhost:8080/api/alumno/obtenerCorreo?correo=${encodeURIComponent(correo)}`)
+          .get(`http://localhost:8080/api/alumno/obtenerCorreo?correo=${encodeURIComponent(correo)}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
           .then((res) => setUsuario(res.data))
           .catch((err) => console.error('Error al obtener alumno:', err));
       }
@@ -26,19 +31,28 @@ const ChatArea = ({ selectedContact }) => {
     handleStorageChange();
 
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, [correo]);
+  }, [correo, token]);
 
+  // Enviar mensaje
   const handleSend = async (msg) => {
     if (msg.trim() && selectedContact && usuario.id) {
       const mensajeDTO = {
         contenido: msg,
-        estado:true,
+        estado: true,
         emisorAlumnoId: usuario.id,
         receptorProfesorId: selectedContact.id,
       };
 
       try {
-        const response = await axios.post('http://localhost:8080/api/mensaje/enviar', mensajeDTO);
+        const response = await axios.post(
+          'http://localhost:8080/api/mensaje/enviar',
+          mensajeDTO,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
         const mensajeEnviado = response.data;
         setMessages((prev) => [...prev, mensajeEnviado]);
       } catch (error) {
@@ -47,45 +61,53 @@ const ChatArea = ({ selectedContact }) => {
     }
   };
 
- useEffect(() => {
-  let intervalId;
-
-  const cargarMensajes = async () => {
-    try {
-      if (usuario.id && selectedContact?.id) {
-        const res = await axios.get(`http://localhost:8080/api/mensaje/alumno/${usuario.id}`);
-        const mensajesFiltrados = res.data.filter(
-          (m) =>
-            (m.emisorProfesorId === selectedContact.id && m.receptorAlumnoId === usuario.id) ||
-            (m.emisorAlumnoId === usuario.id && m.receptorProfesorId === selectedContact.id)
-        );
-        setMessages(mensajesFiltrados);
-      }
-    } catch (error) {
-      console.error('Error al actualizar mensajes:', error);
-    }
-  };
-
-  if (usuario?.id && selectedContact?.id) {
-    cargarMensajes(); // Carga inicial
-    intervalId = setInterval(cargarMensajes, 3000); // Auto-actualización
-  }
-
-  return () => clearInterval(intervalId); // Limpiar intervalo al desmontar/cambiar
-}, [usuario.id, selectedContact?.id]);
-
-
+  // Cargar mensajes periódicamente
   useEffect(() => {
-      const chatContainer = document.querySelector(`.${styles['chat-messages']}`);
-  if (!chatContainer) return;
+    let intervalId;
 
-  const isNearBottom =
-    chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight < 50;
+    const cargarMensajes = async () => {
+      try {
+        if (usuario.id && selectedContact?.id) {
+          const res = await axios.get(
+            `http://localhost:8080/api/mensaje/alumno/${usuario.id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          );
+          const mensajesFiltrados = res.data.filter(
+            (m) =>
+              (m.emisorProfesorId === selectedContact.id && m.receptorAlumnoId === usuario.id) ||
+              (m.emisorAlumnoId === usuario.id && m.receptorProfesorId === selectedContact.id)
+          );
+          setMessages(mensajesFiltrados);
+        }
+      } catch (error) {
+        console.error('Error al actualizar mensajes:', error);
+      }
+    };
 
-  if (isNearBottom) {
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-  }
-}, [messages]);
+    if (usuario?.id && selectedContact?.id) {
+      cargarMensajes(); // Carga inicial
+      intervalId = setInterval(cargarMensajes, 3000); // Auto-actualización
+    }
+
+    return () => clearInterval(intervalId); // Limpiar al desmontar
+  }, [usuario.id, selectedContact?.id, token]);
+
+  // Auto scroll
+  useEffect(() => {
+    const chatContainer = document.querySelector(`.${styles['chat-messages']}`);
+    if (!chatContainer) return;
+
+    const isNearBottom =
+      chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight < 50;
+
+    if (isNearBottom) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  }, [messages]);
 
   return (
     <div className={styles['chat-area']}>
@@ -136,7 +158,6 @@ const ChatArea = ({ selectedContact }) => {
 
       <MessageInput onSend={handleSend} />
 
-      {/* Modal de nuevo mensaje */}
       {showModal && <MensajeModal onClose={() => setShowModal(false)} />}
     </div>
   );

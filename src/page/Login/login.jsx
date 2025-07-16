@@ -37,6 +37,9 @@ const Login = () => {
   console.log("Login response:", response);
 
   localStorage.setItem("correoAlumno", correo);
+  localStorage.setItem("token", response.data.token); 
+
+    console.log("Token guardado:", response.data.token); 
   navigate("/principal");
 } catch (e) {
   console.error("Login error:", e);

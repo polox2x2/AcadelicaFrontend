@@ -3,7 +3,6 @@ import styles from './style/principal.module.css'
 import CourseCard from '../../component/CourseCard/CourseCard';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Chatbot from '../../component/AgenteChat/Chatbot';
 
 const Principal = () => {
   const navigate = useNavigate();
@@ -56,10 +55,11 @@ useEffect(() => {
         cursos.map((curso, index) => (
           <CourseCard
             key={index}
+            id={curso.id}
             icon="📘"
             titulo={curso.nombre}
-            docente={curso.profesorID?.nombre || 'Desconocido'}
-          />
+            docente={curso.profesor?.nombre || 'Desconocido'}
+        />
         ))
       ) : (
         <p className={styles['no-courses-message']}>
